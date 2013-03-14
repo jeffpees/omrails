@@ -36,4 +36,7 @@ Omrails::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #Lets Paperclip know to look there by adding that directory to its path.
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
