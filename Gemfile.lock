@@ -63,7 +63,7 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     orm_adapter (0.4.0)
-    paperclip (3.2.1)
+    paperclip (3.0.4)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -131,7 +131,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
-  paperclip (~> 3.0)
+  paperclip (~> 3.0.0)
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
