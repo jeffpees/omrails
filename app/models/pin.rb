@@ -4,6 +4,7 @@ require 'timeout'
 class Pin < ActiveRecord::Base
 
   belongs_to :user
+  
   attr_accessor :image_url
   attr_accessible :description, :image, :image_url, :image_remote_url
 
@@ -27,11 +28,11 @@ class Pin < ActiveRecord::Base
     return if self.image.present?
     	begin
 	      Timeout::timeout(2) do
-	        cat = open URI.parse(image_url)
-	        def cat.original_filename
+	        io = open URI.parse(image_url)
+	        def io.original_filename
 	        	base_uri.path.split('/').last.scan(/([\w\.]*\.(?:png|jpe?g|gif|bmp|JPG|JPEG|BMP|GIF|PNG))/).flatten.first
 	      	end
-	      self.image = cat.original_filename.blank? ? nil : cat
+	      self.image = io.original_filename.blank? ? nil : io
   end
     rescue Exception => e
       Rails.logger.error "Failed to download image from \"#{image_url}\": #{e.message}"
