@@ -7,6 +7,7 @@ gem 'simple_form'
 gem 'paperclip', '~>3.0.0'
 gem 'cocaine', '~> 0.3.2'
 gem 'aws-sdk'
+gem 'aws-s3'
 
 group :production do
 	gem 'pg'

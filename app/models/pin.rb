@@ -10,10 +10,8 @@ class Pin < ActiveRecord::Base
 
   before_validation :download_remote_image, :if => lambda { |pin| pin.image_url.present? }
 
-  has_attached_file :image, 
-                    styles: { medium: "320x240>"}
-                    #:storage => :s3, 
-                    #:s3_credentials => S3_CREDENTIALS
+  has_attached_file :image, :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", 
+                    :bucket => "omrlv", styles: { large: '600x400>', medium: '320x240>', thumb: '100x100>'}
 
   validates :description, presence: true
   validates :user_id, presence: true
